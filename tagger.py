@@ -41,5 +41,5 @@ def cli():
     Tagger.print_tags(results)
 
 if __name__ == "__main__":
-    test()
-    #cli()
+    #test()
+    cli()
