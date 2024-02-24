@@ -7,10 +7,6 @@ from pathlib import Path
 from glob import glob
 from PIL import Image, UnidentifiedImageError
 
-from webui import wrap_gradio_gpu_call
-from modules import ui
-from modules import generation_parameters_copypaste as parameters_copypaste
-
 from tagger import format, utils
 from tagger.utils import split_str
 from tagger.interrogator import Interrogator

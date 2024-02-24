@@ -1,4 +1,5 @@
 import os
+import re
 import gc
 import pandas as pd
 import numpy as np
@@ -10,26 +11,21 @@ from PIL import Image
 from pathlib import Path
 from huggingface_hub import hf_hub_download
 
-from modules import shared
-from modules.deepbooru import re_special as tag_escape_pattern
+# from modules import shared
+# from modules.deepbooru import re_special as tag_escape_pattern
 
 # i'm not sure if it's okay to add this file to the repository
 from . import dbimutils
 
+tag_escape_pattern = re.compile(r'([\\()])')
+
 # select a device to process
-use_cpu = ('all' in shared.cmd_opts.use_cpu) or (
-    'interrogate' in shared.cmd_opts.use_cpu)
+use_cpu = True
 
 if use_cpu:
     tf_device_name = '/cpu:0'
 else:
     tf_device_name = '/gpu:0'
-
-    if shared.cmd_opts.device_id is not None:
-        try:
-            tf_device_name = f'/gpu:{int(shared.cmd_opts.device_id)}'
-        except ValueError:
-            print('--device-id is not a integer')
 
 
 class Interrogator:
@@ -237,17 +233,17 @@ class WaifuDiffusionInterrogator(Interrogator):
     def load(self) -> None:
         model_path, tags_path = self.download()
 
-        # only one of these packages should be installed at a time in any one environment
-        # https://onnxruntime.ai/docs/get-started/with-python.html#install-onnx-runtime
-        # TODO: remove old package when the environment changes?
-        from launch import is_installed, run_pip
-        if not is_installed('onnxruntime'):
-            package = os.environ.get(
-                'ONNXRUNTIME_PACKAGE',
-                'onnxruntime-gpu'
-            )
+        # # only one of these packages should be installed at a time in any one environment
+        # # https://onnxruntime.ai/docs/get-started/with-python.html#install-onnx-runtime
+        # # TODO: remove old package when the environment changes?
+        # from launch import is_installed, run_pip
+        # if not is_installed('onnxruntime'):
+        #     package = os.environ.get(
+        #         'ONNXRUNTIME_PACKAGE',
+        #         'onnxruntime-gpu'
+        #     )
 
-            run_pip(f'install {package}', 'onnxruntime')
+        #     run_pip(f'install {package}', 'onnxruntime')
 
         from onnxruntime import InferenceSession
 

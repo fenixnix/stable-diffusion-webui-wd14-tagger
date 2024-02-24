@@ -1,0 +1,22 @@
+{
+    "wd14-vit":{
+        "repo_id":"SmilingWolf/wd-v1-4-vit-tagger",
+        "url":"https://huggingface.co/"
+    },
+    "wd14-convnext":{
+        "repo_id":"SmilingWolf/wd-v1-4-convnext-tagger",
+        "url":"https://huggingface.co/SmilingWolf/wd-v1-4-convnext-tagger"
+    },
+    "wd14-vit-v2":{
+        "repo_id":"SmilingWolf/wd-v1-4-vit-tagger-v2",
+        "url":"https://huggingface.co/SmilingWolf/wd-v1-4-vit-tagger-v2"
+    },
+    "wd14-convnext-v2":{
+        "repo_id":"SmilingWolf/wd-v1-4-convnext-tagger-v2",
+        "url":"https://huggingface.co/SmilingWolf/wd-v1-4-convnext-tagger-v2"
+    },
+    "wd14-swinv2-v2":{
+        "repo_id":"SmilingWolf/wd-v1-4-swinv2-tagger-v2",
+        "url":"https://huggingface.co/SmilingWolf/wd-v1-4-swinv2-tagger-v2"
+    }
+}

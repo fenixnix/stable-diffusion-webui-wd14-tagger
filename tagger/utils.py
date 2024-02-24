@@ -3,7 +3,6 @@ import os
 from typing import List, Dict
 from pathlib import Path
 
-from modules import shared, scripts
 from preload import default_ddp_path
 from tagger.preset import Preset
 from tagger.interrogator import Interrogator, DeepDanbooruInterrogator, WaifuDiffusionInterrogator
