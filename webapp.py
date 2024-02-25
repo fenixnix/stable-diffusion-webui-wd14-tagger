@@ -66,8 +66,8 @@ def process_path(path):
         text = ", ".join(textlist)
         with open(tag_fn,"w",encoding="utf-8") as tag_file:
             tag_file.write(text)
-        st.write(img_fn)
-        st.markdown(f"`{text}`")
+        st.sidebar.write(img_fn)
+        st.sidebar.markdown(f"`{text}`")
         bar.progress((idx)/len(img_tags),f"[{idx}/{len(img_tags)}]")
 
 with tab2:
@@ -92,9 +92,10 @@ with tab2:
         tagged_fn = zip_path+"_tagged"
         shutil.make_archive(tagged_fn,'zip',zip_path)
         with open(tagged_fn+".zip",'rb') as fp:
-            st.sidebar.download_button("下载数据包（打标后）",
+            st.download_button("下载数据包（打标后）",
                             data = fp.read(),
                             file_name=".".join(zip_file.name.split(".")[:-1])+"_tagged.zip",
                             mime="bytes/zip"
                             )
+            
 
