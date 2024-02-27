@@ -1,3 +1,6 @@
+import os
+os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
+
 import json
 from PIL import Image
 from src.interrogator import WaifuDiffusionInterrogator
