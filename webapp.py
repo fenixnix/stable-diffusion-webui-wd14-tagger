@@ -42,6 +42,9 @@ with tab1:
                 bar.progress((1+i)/len(image_list),anime[i%len(anime)])
                 for i in results: 
                     st.progress(i[1],i[0])
+                st.text(aesthetic_classify(img))
+                st.text(style_classify(img))
+                st.text(waifu_classify(img)) 
                 st.markdown("-"*5)
 
 def process_path(path):

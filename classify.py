@@ -1,3 +1,6 @@
+import os
+os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
+
 from transformers import pipeline
 
 pipe_aesthetic = pipeline("image-classification", "cafeai/cafe_aesthetic")
