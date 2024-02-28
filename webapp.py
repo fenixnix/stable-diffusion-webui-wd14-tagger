@@ -5,6 +5,7 @@ import shutil
 from PIL import Image
 import streamlit as st
 from tagger import Tagger
+from classify import aesthetic_classify, style_classify, waifu_classify
 
 def file2pilImage(st_file):
     return Image.open(io.BytesIO(st_file.read()))
@@ -33,7 +34,6 @@ with tab1:
     if len(image_list)>0:
         bar = st.progress(0)
         st.image(image_list)
-
 
         with st.sidebar:
             for i in range(len(image_list)):
