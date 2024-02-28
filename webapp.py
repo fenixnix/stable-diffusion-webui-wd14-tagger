@@ -38,13 +38,13 @@ with tab1:
         with st.sidebar:
             for i in range(len(image_list)):
                 img = file2pilImage(image_list[i])
+                st.code(",".join([f"{k}:{v:{1}.{2}}" for k,v in aesthetic_classify(img).items()]))
+                st.code(",".join([f"{k}:{v:{1}.{2}}" for k,v in style_classify(img).items()]))
+                st.code(",".join([f"{k}:{v:{1}.{2}}" for k,v in waifu_classify(img).items()]))
                 results = st.session_state.tagger.tag(img,threshold_tag1)
                 bar.progress((1+i)/len(image_list),anime[i%len(anime)])
                 for i in results: 
                     st.progress(i[1],i[0])
-                st.text(aesthetic_classify(img))
-                st.text(style_classify(img))
-                st.text(waifu_classify(img)) 
                 st.markdown("-"*5)
 
 def process_path(path):
